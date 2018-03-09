@@ -1,5 +1,5 @@
 $ dig www.akshatpatel.io +nostats +nocomments +nocmd
-;www.akshatpatel.io.                     IN      A
-www.akshatpatel.io.              3592    IN      CNAME   akshat3272.github.io.
+;www.akshatpatel.io.         3600         IN A    151.101.185.147
+www.akshatpatel.io.         3592    IN      CNAME   akshat3272.github.io.
 akshat3272.github.io.      43192   IN      CNAME   < GITHUB-PAGES-SERVER >.
 < GITHUB-PAGES-SERVER >.      22      IN      A      151.101.185.147
