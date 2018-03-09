@@ -1,1 +1,4 @@
-www.akshatpatel.io
+dig www.akshatpatel.io +nostats +nocomments +nocmd
+;www.akshatpatel.io.                     IN      A
+www.akshatpatel.io.              3592    IN      CNAME   YOUR-USERNAME.github.io.
+akshat3272.github.io.      43192   IN      CNAME   < GITHUB-PAGES-SERVER >.
