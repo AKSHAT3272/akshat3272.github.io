@@ -1,0 +1,303 @@
+@import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: black;
+  margin: 0;
+  padding: 3em;
+  font: .8em/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  color: white;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: limegreen;
+}
+
+.filterwrapper {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.svgtext {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.intro {
+  margin-bottom: 3em;
+}
+
+hr {
+  height: 0;
+  border-bottom: solid #cccccc 1px;
+}
+
+.glitch-filter-example {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 4em 0 2em;
+  min-width: 490px;
+}
+
+.glitch-filter-example__heading {
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+
+.glitch-filter-example__filtered-text {
+  -webkit-filter: url(#filter);
+          filter: url(#filter);
+  fill: white;
+  font-family: 'Share Tech Mono', sans-serif;
+  font-size: 100px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.top-r,
+.bot-r,
+.top-g,
+.bot-g {
+  stroke: #ffffff;
+}
+
+.top-r {
+  stroke-width: 100px;
+  -webkit-animation: topani 3.5s linear infinite;
+          animation: topani 3.5s linear infinite;
+}
+
+.bot-r {
+  stroke-width: 100px;
+  -webkit-animation: botani 4s linear infinite;
+          animation: botani 4s linear infinite;
+}
+
+.top-g {
+  stroke-width: 50px;
+  animation: topani 4s linear reverse infinite;
+}
+
+.bot-g {
+  stroke-width: 50%;
+  animation: botani 3.5s linear reverse infinite;
+}
+
+@-webkit-keyframes topani {
+  0% {
+    stroke-width: 8px;
+  }
+  8% {
+    stroke-width: 186px;
+  }
+  12% {
+    stroke-width: 5px;
+  }
+  18% {
+    stroke-width: 36px;
+  }
+  24% {
+    stroke-width: 89px;
+  }
+  26% {
+    stroke-width: 90px;
+  }
+  32% {
+    stroke-width: 78px;
+  }
+  36% {
+    stroke-width: 15px;
+  }
+  40% {
+    stroke-width: 141px;
+  }
+  46% {
+    stroke-width: 131px;
+  }
+  50% {
+    stroke-width: 182px;
+  }
+  56% {
+    stroke-width: 11px;
+  }
+  61% {
+    stroke-width: 123px;
+  }
+  66% {
+    stroke-width: 166px;
+  }
+  71% {
+    stroke-width: 45px;
+  }
+  75% {
+    stroke-width: 72px;
+  }
+  84% {
+    stroke-width: 103px;
+  }
+  89% {
+    stroke-width: 79px;
+  }
+  94% {
+    stroke-width: 161px;
+  }
+}
+
+@keyframes topani {
+  0% {
+    stroke-width: 8px;
+  }
+  8% {
+    stroke-width: 186px;
+  }
+  12% {
+    stroke-width: 5px;
+  }
+  18% {
+    stroke-width: 36px;
+  }
+  24% {
+    stroke-width: 89px;
+  }
+  26% {
+    stroke-width: 90px;
+  }
+  32% {
+    stroke-width: 78px;
+  }
+  36% {
+    stroke-width: 15px;
+  }
+  40% {
+    stroke-width: 141px;
+  }
+  46% {
+    stroke-width: 131px;
+  }
+  50% {
+    stroke-width: 182px;
+  }
+  56% {
+    stroke-width: 11px;
+  }
+  61% {
+    stroke-width: 123px;
+  }
+  66% {
+    stroke-width: 166px;
+  }
+  71% {
+    stroke-width: 45px;
+  }
+  75% {
+    stroke-width: 72px;
+  }
+  84% {
+    stroke-width: 103px;
+  }
+  89% {
+    stroke-width: 79px;
+  }
+  94% {
+    stroke-width: 161px;
+  }
+}
+@-webkit-keyframes botani {
+  6% {
+    stroke-width: 80px;
+  }
+  15% {
+    stroke-width: 34px;
+  }
+  16% {
+    stroke-width: 34px;
+  }
+  27% {
+    stroke-width: 87px;
+  }
+  37% {
+    stroke-width: 137px;
+  }
+  41% {
+    stroke-width: 129px;
+  }
+  53% {
+    stroke-width: 55px;
+  }
+  63% {
+    stroke-width: 196px;
+  }
+  66% {
+    stroke-width: 75px;
+  }
+  74% {
+    stroke-width: 11px;
+  }
+  80% {
+    stroke-width: 166px;
+  }
+  94% {
+    stroke-width: 169px;
+  }
+  101% {
+    stroke-width: 170px;
+  }
+}
+@keyframes botani {
+  6% {
+    stroke-width: 80px;
+  }
+  15% {
+    stroke-width: 34px;
+  }
+  16% {
+    stroke-width: 34px;
+  }
+  27% {
+    stroke-width: 87px;
+  }
+  37% {
+    stroke-width: 137px;
+  }
+  41% {
+    stroke-width: 129px;
+  }
+  53% {
+    stroke-width: 55px;
+  }
+  63% {
+    stroke-width: 196px;
+  }
+  66% {
+    stroke-width: 75px;
+  }
+  74% {
+    stroke-width: 11px;
+  }
+  80% {
+    stroke-width: 166px;
+  }
+  94% {
+    stroke-width: 169px;
+  }
+  101% {
+    stroke-width: 170px;
+  }
+}
