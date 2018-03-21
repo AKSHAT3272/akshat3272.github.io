@@ -96,6 +96,10 @@ body{
         border-radius: 25px;
     }
 
+    .svg {
+
+    }
+
 .content {
     text-align: center;
 }
@@ -381,6 +385,11 @@ a:hover {
     .avatar img {
         max-width: 125px;
         max-height: 125px;
+    }
+
+    .svg svg{
+      max-width: 125px;
+      max-height: 125px;
     }
 
     .content {
