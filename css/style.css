@@ -388,8 +388,7 @@ a:hover {
     }
 
     .svg svg{
-      max-width: 125px;
-      max-height: 125px;
+      width: 100%
     }
 
     .content {
