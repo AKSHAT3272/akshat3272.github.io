@@ -150,22 +150,14 @@ body{
             }
 
     .footer {
-     position: relative;
+     position: fixed;
      left: 0;
      bottom: 0;
      width: 100%;
      background-color: black;
      color: white;
      text-align: center;
-    }
-    body > footer{
-        margin:0px;
-        padding:0px;
-        min-width:100%;
-        max-width:100%;
-        background:#ffffff;
-        height:auto;
-    }
+}
 
     .fullscreen-bg {
     position: fixed;
