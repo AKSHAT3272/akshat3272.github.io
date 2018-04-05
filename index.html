@@ -1,62 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="UTF-8">
+  <title>Akshat Patel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://oss.maxcdn.com/animatecss/3.2.0/animate.min.css'>
 
-		<title>Akshat Patel</title>
+      <link rel="stylesheet" href="css/style.css">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<link rel="stylesheet" href="css/style.css">
-
-
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-
-
-	<body class="animated bounceInDown">
-
-		<div class="fullscreen-bg">
-<video muted autoplay poster="img/Ceiling.mp4" class="fullscreen-bg__video">
-		<source src="img/Ceiling.mp4" type="video/mp4" alt"">
-</video>
-</div>
-				<div class="svg">
-
-          <center><img src="img/akshat.svg" alt="Akshat" width = "800" height="400"></center>
-      <center><img id="loading" img src="img/cutmypic.png" alt="Akshat"></center> </div>
-		<div class="content">
-			<p>
-				              <center><font size = "+2">Information Security student<br>
-				                                        Adelphi University, New York. </font></center>
-		</p>
-    <p>
-      <a href="https://en.wikipedia.org/wiki/Computer_science" target="_blank"><font size = "+0.2">Computer Science</font></a><br>
-      <a href="https://en.wikipedia.org/wiki/Information_security" target="_blank"><font size = "+0.2">Information Security</font></a><br>
-      <a href="http://www.adelphi.edu/" target="_blank"><font size = "+0.2">Adelphi University</font></a><br>
-      <font size = "+0.2">Contact </font><a href="mailto:akshatketankumarpa@mail.adelphi.edu" target="_blank"><font size = "+0.2">Email me</font></a>.
-    </p>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </div>
 </head>
-<footer>
-<section class="footer">
-			<ul class="social-icons">
-				<li><a class="twitter" href="https://twitter.com/akshatpatel10" target="_blank" title="Twitter">Twitter</a></li>
-				<li><a class="facebook" href="https://www.facebook.com/akshat.patel.33" target="_blank" title="Facebook">Facebook</a></li>
-				<li><a class="googleplus" href="https://plus.google.com/u/0/115578803111372582165" target="_blank" title="Google+">Google+</a></li>
-				<li><a class="instagram" href="https://www.instagram.com/akshat.patel/" target="_blank" title="Instagram">Instagram</a></li>
-				<li><a class="Linkedin" href="https://www.linkedin.com/in/akshat-patel/" target="_blank" title="Linkedin">Linkedin</a></li>
-				<li><a class="github" href="https://github.com/AKSHAT3272" target="_blank" title="github">github</a></li>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
+
+
+
+          <script>
+            var mouseX = 0,
+                mouseY = 0,
+                windowHalfX = window.innerWidth / 2,
+                windowHalfY = window.innerHeight / 2,
+                SEPARATION = 200,
+                AMOUNTX = 10,
+                AMOUNTY = 10,
+                camera,
+                scene,
+                renderer;
+
+            init();
+            animate();
+
+            function init() {
+
+              var container,
+                  separation = 100,
+                  amountX = 50,
+                  amountY = 50,
+                  particle;
+
+              container = document.createElement( 'div' );
+              document.body.appendChild( container );
+
+              scene = new THREE.Scene();
+
+              renderer = new THREE.CanvasRenderer({ alpha: true }); // gradient; this can be swapped for WebGLRenderer
+              renderer.setSize( window.innerWidth, window.innerHeight );
+              container.appendChild( renderer.domElement );
+
+              camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                1,
+                10000
+              );
+              camera.position.z = 100;
+
+              // particles
+              var PI2 = Math.PI * 2;
+              var material = new THREE.SpriteCanvasMaterial({
+                color: 0x616163,
+                program: function ( context ) {
+                  context.beginPath();
+                  context.arc( 0, 0, 0.5, 0, PI2, true );
+                  context.fill();
+                }
+              });
+
+              var geometry = new THREE.Geometry();
+
+              for ( var i = 0; i < 100; i ++ ) {
+                particle = new THREE.Sprite( material );
+                particle.position.x = Math.random() * 2 - 1;
+                particle.position.y = Math.random() * 2 - 1;
+                particle.position.z = Math.random() * 2 - 1;
+                particle.position.normalize();
+                particle.position.multiplyScalar( Math.random() * 10 + 450 );
+                particle.scale.x = particle.scale.y = 10;
+                scene.add( particle );
+                geometry.vertices.push( particle.position );
+              }
+
+              // lines
+              var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x616163, opacity: 0.5 } ) );
+              scene.add( line );
+
+              // mousey
+              document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+              document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+              document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+              window.addEventListener( 'resize', onWindowResize, false );
+
+            } // end init();
+
+            function onWindowResize() {
+
+              windowHalfX = window.innerWidth / 2;
+              windowHalfY = window.innerHeight / 2;
+
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+
+              renderer.setSize( window.innerWidth, window.innerHeight );
+
+            }
+
+            function onDocumentMouseMove(event) {
+
+              mouseX = event.clientX - windowHalfX;
+              mouseY = event.clientY - windowHalfY;
+
+            }
+
+            function onDocumentTouchStart( event ) {
+
+              if ( event.touches.length > 1 ) {
+
+                event.preventDefault();
+
+                mouseX = event.touches[ 0 ].pageX - windowHalfX;
+                mouseY = event.touches[ 0 ].pageY - windowHalfY;
+
+              }
+            }
+
+            function onDocumentTouchMove( event ) {
+
+              if ( event.touches.length == 1 ) {
+
+                event.preventDefault();
+
+                mouseX = event.touches[ 0 ].pageX - windowHalfX;
+                mouseY = event.touches[ 0 ].pageY - windowHalfY;
+
+              }
+            }
+
+            function animate() {
+
+              requestAnimationFrame( animate );
+              render();
+
+            }
+
+            function render() {
+
+              camera.position.x += ( mouseX - camera.position.x ) * .05;
+              camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+              camera.lookAt( scene.position );
+
+              renderer.render( scene, camera );
+
+            }
+          </script>
+
+  <!-- PRELOADER -->
+<div id="preloader"><div><em></em><em></em><em></em><em></em></div></div>
+<!-- //PRELOADER -->
+
+<header class="cd-header header--fixed">
+		<div id="cd-logo"><a href="#0"><img src="img/alogo.png" alt="Logo"></a></div>
+
+		<nav class="cd-main-nav">
+			<ul>
+				<!-- inser more links here -->
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact"> Contact</a></li>
 			</ul>
-</section>
-</footer>
-	<!-- </div>
-	<div class = "Widget">
-	<iframe id="widget-iframe" src="https://cyware.com/news/widget.php?domain=home.adelphi.edu" frameborder="0" style="max-width:500px;width:100%;min-height:600px;">
-	</div>-->
-	</body>
+		</nav> <!-- cd-main-nav -->
+	</header>
+
+	<main class="cd-main-content" id="fullpage">
+		<div class="cd-fixed-bg cd-bg-1 section active" data-anchor="home">
+      <div class="txt-container">
+      <div class="text"></div>
+    </div>
+		</div> <!-- cd-fixed-bg -->
+
+		<div class="cd-scrolling-bg cd-color-2 section" data-anchor="about">
+			<div class="cd-container">
+				<p>
+           <div class="slide" id="slide1"><h1>Work In Progress</h1></div>
+	        <div class="slide" id="slide2"><h1>ABOUT ME</h1></div>
+				</p>
+			</div> <!-- cd-container -->
+		</div> <!-- cd-scrolling-bg-->
+
+		<div class="cd-fixed-bg cd-bg-2 section" data-anchor="contact" align = "center">
+      <div class="social__container">
+          <!-- social__item linkedin -->
+          <div class="social__item">
+                  <a target="_blank" href="https://www.linkedin.com/in/akshat-patel/" class="social__icon--linkedin"><i class="icon--linkedin"></i></a>
+          </div>
+          <!-- /social__item linkedin -->
+
+          <!-- social__item twitter -->
+          <div class="social__item">
+                  <a target="_blank" href="https://twitter.com/akshatpatel10" class="social__icon--twitter"><i class="icon--twitter"></i></a>
+          </div>
+          <!-- /social__item twiter -->
+
+          <!-- social__item google+ -->
+          <div class="social__item">
+                  <a target="_blank" href="https://plus.google.com/u/0/115578803111372582165" class="social__icon--googleplus"><i class="icon--googleplus"></i></a>
+          </div>
+          <!-- /social__item google+ -->
+
+          <!-- social__item facebook -->
+          <div class="social__item">
+                  <a target="_blank" href="https://www.facebook.com/akshat.patel.33" class="social__icon--facebook"><i class="icon--facebook"></i></a>
+          </div>
+          <!-- /social__item facebook -->
+
+          <!-- social__item instagram -->
+          <div class="social__item">
+                  <a target="_blank" href="https://www.instagram.com/akshat.patel/" class="social__icon--instagram"><i class="icon--instagram"></i></a>
+          </div>
+          <!-- /social__item instagram -->
+
+          <!-- social__item skype -->
+          <div class="social__item">
+                  <a target="_blank" href="http://skype.com" class="social__icon--skype"><i class="icon--skype"></i></a>
+          </div>
+          <!-- /social__item skype -->
+
+          <!-- social__item github -->
+          <div class="social__item">
+                  <a target="_blank" href="https://github.com/AKSHAT3272" class="social__icon--github"><i class="icon--github"></i></a>
+          </div>
+          <!-- /social__item github -->
+
+      </div>
+		</div> <!-- cd-fixed-bg -->
+	</main> <!-- cd-main-content -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://alvarotrigo.com/fullPage/jquery.fullPage.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script src='http://oss.maxcdn.com/headroomjs/0.7.0/headroom.min.js'></script>
+
+
+
+    <script  src="js/index.js"></script>
+    <script  src="js/mouse.js"></script>
+    <script src="js/move.js"></script>
+
+    <!-- threejs.org canvas lines example -->
+
+    <!-- <body onload="init();">
+       <canvas id = "canvas" style="width: 2170px; height: 1532px;"></canvas>
+       <div class="title">Akshat Patel</div>
+       <div class="subtitle"> geek + smart + curious + nerd + ingenious + cunning = ME </div>
+     </body> -->
+
+
+
+
+
+
+
+
 </html>
